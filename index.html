@@ -287,8 +287,16 @@ footer{background:var(--deep);padding:48px 60px;display:flex;justify-content:spa
     <h2 class="section-title" style="color:white;">Percorra cada divisão<br>antes de <em style="color:var(--gold-light);">visitar.</em></h2>
     <p class="section-text" style="color:rgba(255,255,255,0.6);margin-bottom:44px;">Visita virtual completa em tecnologia Matterport — navegue por todos os espaços, meça distâncias e sinta a amplitude real do apartamento antes de agendar visita presencial.</p>
   </div>
-  <div style="position:relative;width:100%;padding-bottom:52%;background:#000;">
-    <iframe src="https://my.matterport.com/show/?m=9LdBxgVygAe&play=1&qs=1&lang=pt"
+  <div style="position:relative;width:100%;padding-bottom:52%;background:#000;" id="matterport-wrap">
+    <div id="matterport-overlay" style="position:absolute;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(13,27,42,0.5);" onclick="activateMatterport()">
+      <div style="text-align:center;">
+        <div style="width:80px;height:80px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+          <div style="width:0;height:0;border-style:solid;border-width:14px 0 14px 24px;border-color:transparent transparent transparent var(--deep);margin-left:6px;"></div>
+        </div>
+        <p style="color:white;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;">Clique para explorar</p>
+      </div>
+    </div>
+    <iframe id="matterport-iframe" src="about:blank" data-src="https://my.matterport.com/show/?m=9LdBxgVygAe&play=1&qs=1&lang=pt"
       style="position:absolute;inset:0;width:100%;height:100%;border:none;"
       allow="fullscreen; xr-spatial-tracking" allowfullscreen title="Visita Virtual 3D"></iframe>
   </div>
@@ -598,8 +606,8 @@ function buildPhotoGrid(){
     grid.appendChild(cell);
   }
   var allCell=document.createElement('a');allCell.className='view-all-cell';
-  allCell.href='https://my.matterport.com/show/?m=9LdBxgVygAe';allCell.target='_blank';allCell.rel='noopener';
-  allCell.innerHTML='<span class="view-all-icon">⬡</span><span class="view-all-text">Visita Virtual 3D · Matterport</span>';
+  allCell.href='https://www.youtube.com/watch?v=MFECQq2OZmM';allCell.target='_blank';allCell.rel='noopener';
+  allCell.innerHTML='<span class="view-all-icon">▶</span><span class="view-all-text">Vídeo do Apartamento</span>';
   grid.appendChild(allCell);
 }
 
@@ -615,6 +623,13 @@ function switchVideo(btn,fileId){
   if(iframe)iframe.src='https://drive.google.com/file/d/'+fileId+'/preview';
   document.querySelectorAll('[id^="vbtn"]').forEach(function(a){a.style.color='rgba(255,255,255,0.5)';a.style.borderColor='rgba(255,255,255,0.15)';});
   btn.style.color='white';btn.style.borderColor='rgba(201,168,76,0.6)';
+}
+
+function activateMatterport(){
+  var overlay=document.getElementById('matterport-overlay');
+  var iframe=document.getElementById('matterport-iframe');
+  if(overlay)overlay.style.display='none';
+  if(iframe)iframe.src=iframe.dataset.src;
 }
 
 const observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.1});
