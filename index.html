@@ -17,10 +17,9 @@ body{font-family:'Jost',sans-serif;background:var(--white);color:var(--deep);ove
 .lang-btn{background:none;border:1px solid rgba(201,168,76,0.3);color:rgba(255,255,255,0.6);padding:4px 12px;font-family:'Jost',sans-serif;font-size:0.7rem;letter-spacing:0.15em;cursor:pointer;transition:all 0.3s;border-radius:2px;}
 .lang-btn:hover,.lang-btn.active{background:var(--gold);color:var(--deep);border-color:var(--gold);}
 .hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:flex-end;overflow:hidden;margin-top:52px;}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,27,42,0.2) 0%,rgba(13,27,42,0.78) 100%),linear-gradient(135deg,#1a4a6b 0%,#0d2d4a 40%,#0a1520 100%);}
-.hero-wave{position:absolute;inset:0;overflow:hidden;}
-.hero-wave::before{content:'';position:absolute;width:200%;height:200%;top:-80%;left:-50%;background:radial-gradient(ellipse at 60% 40%,rgba(42,111,168,0.35) 0%,transparent 60%),radial-gradient(ellipse at 30% 70%,rgba(201,168,76,0.12) 0%,transparent 50%);animation:waveFloat 12s ease-in-out infinite;}
-@keyframes waveFloat{0%,100%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(-3%,3%) rotate(2deg)}}
+.hero-bg{position:absolute;inset:0;background:url('https://raw.githubusercontent.com/souzalrns/canidelo-vista-mar/main/hero.jpg') center center/cover no-repeat;}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,27,42,0.1) 0%,rgba(13,27,42,0.65) 55%,rgba(13,27,42,0.88) 100%);}
+.hero-wave{display:none;}
 .hero-content{position:relative;z-index:2;padding:0 60px 80px;max-width:900px;animation:heroIn 1.2s cubic-bezier(0.22,1,0.36,1) forwards;opacity:0;transform:translateY(30px);}
 @keyframes heroIn{to{opacity:1;transform:translateY(0)}}
 .hero-eyebrow{font-size:0.7rem;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:14px;}
@@ -249,17 +248,6 @@ footer{background:var(--deep);padding:48px 60px;display:flex;justify-content:spa
 </div>
 
 <section class="gallery-section">
-  <div style="position:relative;width:100%;padding-bottom:52%;background:#0a1520;">
-    <iframe
-      src="https://www.youtube.com/embed/MFECQq2OZmM?autoplay=0&rel=0&modestbranding=1"
-      style="position:absolute;inset:0;width:100%;height:100%;border:none;"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
-  </div>
-  <div style="background:rgba(13,27,42,0.95);padding:16px 60px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
-    <span style="font-size:0.6rem;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;" id="vid-label">Visita Virtual 360° · Todos os Espaços</span>
-    <a href="https://www.youtube.com/watch?v=MFECQq2OZmM" target="_blank" rel="noopener" style="font-size:0.7rem;color:rgba(255,255,255,0.6);text-decoration:none;padding:6px 16px;border:1px solid rgba(255,255,255,0.15);">▶ Abrir em ecrã completo</a>
-  </div>
   <div class="photo-grid-wrap">
     <div class="photo-grid" id="photoGrid"></div>
   </div>
@@ -273,18 +261,7 @@ footer{background:var(--deep);padding:48px 60px;display:flex;justify-content:spa
   <div class="lb-counter" id="lbCounter"></div>
 </div>
 
-<section class="matterport-section">
-  <div class="matterport-header reveal">
-    <div class="section-label" id="m3d-label">Visita Virtual 360°</div>
-    <h2 class="section-title" id="m3d-title">Percorra cada divisão<br>antes de <em>visitar.</em></h2>
-    <p class="section-text" id="m3d-text">Visita virtual filmada com câmara 360° — percorra a sala, cozinha, quartos, casas de banho e varandas em 1 minuto. Sinta a amplitude real do imóvel antes de agendar visita presencial.</p>
-  </div>
-  <div class="matterport-embed">
-    <iframe src="https://www.youtube.com/embed/MFECQq2OZmM?rel=0&modestbranding=1"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen title="Visita Virtual 360°"></iframe>
-  </div>
-</section>
+
 
 <section class="section features-section">
   <div class="section-inner">
@@ -529,8 +506,8 @@ function buildPhotoGrid(){
     grid.appendChild(cell);
   }
   var allCell=document.createElement('a');allCell.className='view-all-cell';
-  allCell.href='https://my.matterport.com/show/?m=dq2w5rSXTjR';allCell.target='_blank';
-  allCell.innerHTML='<span class="view-all-icon">📷</span><span class="view-all-text" id="see-all-txt">Ver todas as fotos · Visita 3D</span>';
+  allCell.href='https://www.youtube.com/watch?v=MFECQq2OZmM';allCell.target='_blank';allCell.rel='noopener';
+  allCell.innerHTML='<span class="view-all-icon">▶</span><span class="view-all-text" id="see-all-txt">Visita Virtual 360°</span>';
   grid.appendChild(allCell);
 }
 
