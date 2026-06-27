@@ -16,11 +16,11 @@ body{font-family:'Jost',sans-serif;background:var(--white);color:var(--deep);ove
 .lang-btns{display:flex;gap:6px;}
 .lang-btn{background:none;border:1px solid rgba(201,168,76,0.3);color:rgba(255,255,255,0.6);padding:4px 12px;font-family:'Jost',sans-serif;font-size:0.7rem;letter-spacing:0.15em;cursor:pointer;transition:all 0.3s;border-radius:2px;}
 .lang-btn:hover,.lang-btn.active{background:var(--gold);color:var(--deep);border-color:var(--gold);}
-.hero{position:relative;height:100vh;min-height:700px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;margin-top:52px;}
+.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;overflow:hidden;margin-top:52px;}
 .hero-bg{position:absolute;inset:0;background:url('https://raw.githubusercontent.com/souzalrns/canidelo-vista-mar/main/hero.jpg') center center/cover no-repeat;}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,27,42,0.92) 0%,rgba(13,27,42,0.6) 50%,rgba(13,27,42,0.1) 100%);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,27,42,0.92) 0%,rgba(13,27,42,0.6) 50%,rgba(13,27,42,0.08) 100%);}
 .hero-wave{display:none;}
-.hero-content{position:relative;z-index:2;padding:0 60px;max-width:700px;display:flex;flex-direction:column;justify-content:center;animation:heroIn 1.2s cubic-bezier(0.22,1,0.36,1) forwards;opacity:0;transform:translateY(30px);}
+.hero-content{position:relative;z-index:2;padding:80px 60px;max-width:640px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:120px;animation:heroIn 1.2s cubic-bezier(0.22,1,0.36,1) forwards;opacity:0;transform:translateY(30px);}
 @keyframes heroIn{to{opacity:1;transform:translateY(0)}}
 .hero-eyebrow{font-size:0.7rem;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:14px;}
 .hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold);}
@@ -33,9 +33,16 @@ body{font-family:'Jost',sans-serif;background:var(--white);color:var(--deep);ove
 .hero-price-badge{position:absolute;top:100px;right:60px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.4);backdrop-filter:blur(20px);padding:28px 36px;text-align:center;animation:heroIn 1.4s 0.3s cubic-bezier(0.22,1,0.36,1) forwards;opacity:0;transform:translateY(30px);}
 .hero-price-val{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold-light);font-weight:300;display:block;}
 .hero-price-sub{font-size:0.6rem;letter-spacing:0.2em;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-top:6px;}
-.hero-scroll{position:absolute;bottom:30px;right:60px;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;}
-.hero-scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollLine 2s ease-in-out infinite;}
+.hero-scroll{display:none;}
+.hero-scroll-line{display:none;}
 @keyframes scrollLine{0%,100%{opacity:0.5}50%{opacity:1}}
+.hero-vt{position:absolute;bottom:40px;right:60px;z-index:3;}
+.hero-vt-btn{display:flex;align-items:center;gap:12px;background:rgba(13,27,42,0.5);border:1px solid rgba(201,168,76,0.5);backdrop-filter:blur(12px);padding:14px 22px;text-decoration:none;transition:all 0.3s;animation:heroIn 1.4s 0.4s cubic-bezier(0.22,1,0.36,1) forwards;opacity:0;transform:translateY(20px);}
+.hero-vt-btn:hover{background:rgba(201,168,76,0.15);border-color:var(--gold);}
+.hero-vt-icon{width:38px;height:38px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.hero-vt-play{width:0;height:0;border-style:solid;border-width:8px 0 8px 14px;border-color:transparent transparent transparent var(--deep);margin-left:3px;}
+.hero-vt-label{font-size:0.55rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:2px;}
+.hero-vt-title{font-size:0.8rem;color:white;font-weight:300;display:block;}
 .sea-stripe{background:var(--ocean);padding:16px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;overflow-x:auto;}
 .sea-tag{font-size:0.62rem;letter-spacing:0.2em;color:rgba(255,255,255,0.65);text-transform:uppercase;display:flex;align-items:center;gap:8px;white-space:nowrap;}
 .sea-tag::before{content:'◆';color:var(--gold);font-size:0.45rem;}
@@ -231,7 +238,13 @@ footer{background:var(--deep);padding:48px 60px;display:flex;justify-content:spa
       <div class="hero-stat"><span class="hero-stat-val">550k€</span><span class="hero-stat-label" id="hs-view">Venda Directa</span></div>
     </div>
   </div>
-  <div class="hero-scroll"><div class="hero-scroll-line"></div><span id="h-scroll">Descobrir</span></div>
+  <div class="hero-scroll"></div>
+  <div class="hero-vt">
+    <a href="https://www.youtube.com/watch?v=MFECQq2OZmM" target="_blank" rel="noopener" class="hero-vt-btn">
+      <div class="hero-vt-icon"><div class="hero-vt-play"></div></div>
+      <div><span class="hero-vt-label">Visita Virtual 360°</span><span class="hero-vt-title">Ver todos os espaços</span></div>
+    </a>
+  </div>
 </section>
 
 <div class="sea-stripe">
