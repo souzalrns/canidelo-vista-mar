@@ -20,7 +20,7 @@ body{font-family:'Jost',sans-serif;background:var(--white);color:var(--deep);ove
 .hero-bg{position:absolute;inset:0;background:url('https://raw.githubusercontent.com/souzalrns/canidelo-vista-mar/main/hero.jpg') center center/cover no-repeat;}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,27,42,0.92) 0%,rgba(13,27,42,0.6) 50%,rgba(13,27,42,0.08) 100%);}
 .hero-wave{display:none;}
-.hero-content{position:relative;z-index:2;padding:80px 60px;max-width:640px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:120px;animation:heroIn 1.2s cubic-bezier(0.22,1,0.36,1) forwards;opacity:0;transform:translateY(30px);}
+.hero-content{position:relative;z-index:2;padding:120px 60px 200px;max-width:640px;display:flex;flex-direction:column;justify-content:flex-end;animation:heroIn 1.2s cubic-bezier(0.22,1,0.36,1) forwards;opacity:0;transform:translateY(30px);}
 @keyframes heroIn{to{opacity:1;transform:translateY(0)}}
 .hero-eyebrow{font-size:0.7rem;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:14px;}
 .hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold);}
@@ -36,7 +36,7 @@ body{font-family:'Jost',sans-serif;background:var(--white);color:var(--deep);ove
 .hero-scroll{display:none;}
 .hero-scroll-line{display:none;}
 @keyframes scrollLine{0%,100%{opacity:0.5}50%{opacity:1}}
-.hero-vt{position:absolute;bottom:40px;right:60px;z-index:3;}
+.hero-vt{position:absolute;bottom:40px;right:60px;z-index:3;display:flex;flex-direction:row;gap:12px;align-items:flex-end;}
 .hero-vt-btn{display:flex;align-items:center;gap:12px;background:rgba(13,27,42,0.5);border:1px solid rgba(201,168,76,0.5);backdrop-filter:blur(12px);padding:14px 22px;text-decoration:none;transition:all 0.3s;animation:heroIn 1.4s 0.4s cubic-bezier(0.22,1,0.36,1) forwards;opacity:0;transform:translateY(20px);}
 .hero-vt-btn:hover{background:rgba(201,168,76,0.15);border-color:var(--gold);}
 .hero-vt-icon{width:38px;height:38px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -249,6 +249,10 @@ footer{background:var(--deep);padding:48px 60px;display:flex;justify-content:spa
     <a href="https://my.matterport.com/show/?m=9LdBxgVygAe" target="_blank" rel="noopener" class="hero-vt-btn">
       <div class="hero-vt-icon"><div class="hero-vt-play"></div></div>
       <div><span class="hero-vt-label">Visita Virtual 3D</span><span class="hero-vt-title">Explorar o apartamento</span></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=MFECQq2OZmM" target="_blank" rel="noopener" class="hero-vt-btn" style="margin-top:10px;">
+      <div class="hero-vt-icon" style="background:rgba(255,255,255,0.2);"><div class="hero-vt-play" style="border-color:transparent transparent transparent white;"></div></div>
+      <div><span class="hero-vt-label">Vídeo</span><span class="hero-vt-title">Ver o apartamento</span></div>
     </a>
   </div>
 </section>
