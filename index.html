@@ -16,11 +16,11 @@ body{font-family:'Jost',sans-serif;background:var(--white);color:var(--deep);ove
 .lang-btns{display:flex;gap:6px;}
 .lang-btn{background:none;border:1px solid rgba(201,168,76,0.3);color:rgba(255,255,255,0.6);padding:4px 12px;font-family:'Jost',sans-serif;font-size:0.7rem;letter-spacing:0.15em;cursor:pointer;transition:all 0.3s;border-radius:2px;}
 .lang-btn:hover,.lang-btn.active{background:var(--gold);color:var(--deep);border-color:var(--gold);}
-.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:flex-end;overflow:hidden;margin-top:52px;}
+.hero{position:relative;height:100vh;min-height:700px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;margin-top:52px;}
 .hero-bg{position:absolute;inset:0;background:url('https://raw.githubusercontent.com/souzalrns/canidelo-vista-mar/main/hero.jpg') center center/cover no-repeat;}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,27,42,0.1) 0%,rgba(13,27,42,0.65) 55%,rgba(13,27,42,0.88) 100%);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,27,42,0.92) 0%,rgba(13,27,42,0.6) 50%,rgba(13,27,42,0.1) 100%);}
 .hero-wave{display:none;}
-.hero-content{position:relative;z-index:2;padding:0 60px 80px;max-width:900px;animation:heroIn 1.2s cubic-bezier(0.22,1,0.36,1) forwards;opacity:0;transform:translateY(30px);}
+.hero-content{position:relative;z-index:2;padding:0 60px;max-width:700px;display:flex;flex-direction:column;justify-content:center;animation:heroIn 1.2s cubic-bezier(0.22,1,0.36,1) forwards;opacity:0;transform:translateY(30px);}
 @keyframes heroIn{to{opacity:1;transform:translateY(0)}}
 .hero-eyebrow{font-size:0.7rem;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:14px;}
 .hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold);}
@@ -48,10 +48,9 @@ body{font-family:'Jost',sans-serif;background:var(--white);color:var(--deep);ove
 .section-text{font-size:0.95rem;line-height:1.9;color:#4a5a6a;max-width:680px;font-weight:300;}
 .gallery-section{background:#000;}
 .photo-grid-wrap{padding:4px;background:#111;}
-.photo-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:260px 260px 260px;gap:4px;}
-.photo-cell{position:relative;overflow:hidden;cursor:pointer;background:#1a2a3a;}
-.photo-cell:nth-child(1){grid-column:1/3;grid-row:1/3;}
-.photo-cell:nth-child(6){grid-column:3/5;}
+.photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}
+.photo-cell{position:relative;overflow:hidden;cursor:pointer;background:#1a2a3a;height:220px;}
+.photo-cell:first-child{grid-column:1/3;grid-row:1/3;height:444px;}
 .photo-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1);}
 .photo-cell:hover img{transform:scale(1.06);}
 .photo-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(13,27,42,0.4) 100%);opacity:0;transition:opacity 0.3s;}
@@ -220,7 +219,7 @@ footer{background:var(--deep);padding:48px 60px;display:flex;justify-content:spa
 </header>
 
 <section class="hero">
-  <div class="hero-bg"></div><div class="hero-wave"></div>
+  <div class="hero-bg"></div>
   <div class="hero-content">
     <div class="hero-eyebrow" id="h-eyebrow">Canidelo · Vila Nova de Gaia · 2ª Linha do Mar</div>
     <h1 class="hero-title" id="h-title">Viver entre<br>o <em>Atlântico</em><br>e o Douro.</h1>
@@ -229,7 +228,7 @@ footer{background:var(--deep);padding:48px 60px;display:flex;justify-content:spa
       <div class="hero-stat"><span class="hero-stat-val">155 m²</span><span class="hero-stat-label" id="hs-util">Área Total</span></div>
       <div class="hero-stat"><span class="hero-stat-val">T3+1</span><span class="hero-stat-label" id="hs-tipo">Tipologia</span></div>
       <div class="hero-stat"><span class="hero-stat-val">2 WC</span><span class="hero-stat-label" id="hs-wc">Casas de Banho</span></div>
-      <div class="hero-stat"><span class="hero-stat-val">Vista</span><span class="hero-stat-label" id="hs-view">Oceano Atlântico</span></div>
+      <div class="hero-stat"><span class="hero-stat-val">550k€</span><span class="hero-stat-label" id="hs-view">Venda Directa</span></div>
     </div>
   </div>
   <div class="hero-scroll"><div class="hero-scroll-line"></div><span id="h-scroll">Descobrir</span></div>
@@ -485,17 +484,68 @@ footer{background:var(--deep);padding:48px 60px;display:flex;justify-content:spa
 </footer>
 
 <script>
-const _photos=["https://lh3.googleusercontent.com/d/1Km1CP4uouwTId4ZvJ75NPKcMIqkh0tNB=w1600","https://lh3.googleusercontent.com/d/1wtam3aHqXibVmR9ksjxO6u4FtYA0vUaQ=w1600","https://lh3.googleusercontent.com/d/1cex0rhMmE-DbpW3C1rTlNlXX_nOO2SO6=w1600","https://lh3.googleusercontent.com/d/1OjbZkud5tFJlkmsOONXqKt-Jaiid2HI3=w1600","https://lh3.googleusercontent.com/d/1awq4cJHzZf-firBbcJcu-8TbaOpJHQQV=w1600","https://lh3.googleusercontent.com/d/1SzyYrOykEtw-SzYD32r0y2X-MX1ZN3O7=w1600","https://lh3.googleusercontent.com/d/1Tsbikvq6aKPohXe8ykVEk3UDUi_sLvdp=w1600","https://lh3.googleusercontent.com/d/1rOscn9qdQ_Ouk0TaC7sjirtP7SqvIvnP=w1600","https://lh3.googleusercontent.com/d/1fQ6a2WyS22IXZqpIWxPvNIRwybqbmcRw=w1600","https://lh3.googleusercontent.com/d/1jnydQAEL8M82RnsWkt6ujfxaH7pIZbSK=w1600","https://lh3.googleusercontent.com/d/1o5QAdYZG_LQcOBf9-NjoYxmw6UOlbyuk=w1600","https://lh3.googleusercontent.com/d/1m-qjxSCY8rl9TCfM4r9UkLGKM_BN5F8D=w1600","https://lh3.googleusercontent.com/d/1TDUCUwLlqejz9ehn9rGZ3p3y3fkgoA5w=w1600","https://lh3.googleusercontent.com/d/1cXA5fElIfIe4cQsiOdXOHBnnFL0qxVve=w1600","https://lh3.googleusercontent.com/d/16MHU0PMCTfdYi6gMipQRkMG5fUVPdmq-=w1600","https://lh3.googleusercontent.com/d/1yUxKS_JQoGqjpOTjWjpdq960zGfgSra3=w1600","https://lh3.googleusercontent.com/d/1ThiZ6c7GJj2cn8zrbQWvcFvMseCohr3D=w1600","https://lh3.googleusercontent.com/d/1qMMf7M3zK1IqiPYB15tcZyW6jL_K3NSZ=w1600","https://lh3.googleusercontent.com/d/1PMy3k6VqX3TevnyQd3EnmzEcsJpOfdjt=w1600","https://lh3.googleusercontent.com/d/13L5QwFAke4syNIctmtd_ZI2Jhc8yQ8eA=w1600","https://lh3.googleusercontent.com/d/1Le6rX-4eU7x4I0A16isDKp4q2Scq8j7w=w1600","https://lh3.googleusercontent.com/d/1mJwtXhbxtAM2ozIAgWjwyO-QVQ15Pv33=w1600","https://lh3.googleusercontent.com/d/1IoiVTL7BBQ_3R046DxdbrXzcDKSDoHKB=w1600","https://lh3.googleusercontent.com/d/17avmPLmTdD0_zYWkvztlZgqJpt3alEDb=w1600","https://lh3.googleusercontent.com/d/1fwaRmWB7472islOjLtoMC6E2hgkRtwrO=w1600","https://lh3.googleusercontent.com/d/15eWZRuDaNeZTfu1PDkBKXyPusNM5m1HD=w1600"];
-const _labels=["Vista Mar · Varanda","Edifício ao Pôr do Sol","Cozinha Open Space","Cozinha (detalhe)","Varanda Angular","Varandão Exterior","Sala de Estar","Sala de Jantar","Quarto Suite","WC Suite","WC Principal","Sala (ângulo)","Varanda (exterior)","Vista Oceano","Vista Oceano 2","Corredor","Hall de Entrada","Quarto 3","Divisão Extra","Quarto 2","Roupeiros","Lareira Pellet","Garagem","Entrada","Fachada","Arrecadação"];
-const _emojis=["🌊","🏠","🍳","🔪","🌅","🍖","🛋️","🍽️","🛏️","🚿","🛁","🛋️","🌿","🌊","🌊","🚶","🚪","🛏️","📦","🛏️","🚪","🔥","🚗","🚪","🏠","📦"];
+const _photos=[
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/25.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/09.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/19.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/18.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/03.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/05.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/06.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/07.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/14.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/24.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/12.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/16.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/21.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/23.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/10.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/04.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/08.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/13.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/15.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/17.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/20.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/22.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/11.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/02.jpg",
+"https://cdn.jsdelivr.net/gh/souzalrns/canidelo-vista-mar/01.jpg"
+];
+const _labels=[
+"Vista Mar · Atlântico",
+"Varanda Envidraçada · Vista Mar",
+"Varandão · Churrasqueira Weber",
+"Varandão · Zona de Refeições",
+"Sala · Cozinha Open Space",
+"Sala Vista Cozinha",
+"Cozinha",
+"Cozinha (detalhe)",
+"Suite · Banheira e Chuveiro Duplo",
+"Casa de Banho Social",
+"Suite · Quarto",
+"Quarto com Varanda",
+"Quarto 3",
+"Escritório / Divisão Extra",
+"Lavandaria",
+"Sala de Estar",
+"Cozinha Vista Sala",
+"Suite · Casa de Banho (porta)",
+"Quarto com Varanda · Entrada",
+"Quarto com Varanda · Cama",
+"Quarto 3 · Entrada",
+"Quarto 3 · Cama",
+"Corredor",
+"Hall de Entrada",
+"Fachada"
+];
+const _emojis=["🌊","🛋️","🍖","🍽️","🍳","🛋️","🍳","🔪","🛁","🚿","🛏️","🛏️","🛏️","💻","👕","🛋️","🍳","🚪","🛏️","📺","🛏️","🛏️","🚶","🚪","🏠"];
 
 function buildPhotoGrid(){
   var grid=document.getElementById('photoGrid');
   var showCount=Math.min(13,_photos.length);
   for(var i=0;i<showCount;i++){
     var cell=document.createElement('div');cell.className='photo-cell';
-    if(i===0){cell.style.gridColumn='1/3';cell.style.gridRow='1/3';}
-    if(i===5){cell.style.gridColumn='3/5';}
+    if(i===0){cell.style.gridColumn='1/3';cell.style.gridRow='1/3';cell.style.height='444px';}
     var idx=i;
     var img=document.createElement('img');img.src=_photos[i];img.alt=_labels[i];img.loading=i<4?'eager':'lazy';img.referrerPolicy='no-referrer';
     var ph=document.createElement('div');ph.className='ph';ph.innerHTML='<span>'+_emojis[i]+'</span>'+_labels[i];
