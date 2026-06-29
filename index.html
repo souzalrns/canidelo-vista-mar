@@ -612,10 +612,6 @@ function buildPhotoGrid(){
     cell.addEventListener('click',(function(n){return function(){openLightbox(n);};})(idx));
     grid.appendChild(cell);
   }
-  var allCell=document.createElement('a');allCell.className='view-all-cell';
-  allCell.href='https://www.youtube.com/watch?v=MFECQq2OZmM';allCell.target='_blank';allCell.rel='noopener';
-  allCell.innerHTML='<span class="view-all-icon">▶</span><span class="view-all-text">Vídeo do Apartamento</span>';
-  grid.appendChild(allCell);
 }
 
 var lbIdx=0;
